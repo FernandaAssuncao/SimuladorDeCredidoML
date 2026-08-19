@@ -24,7 +24,8 @@ empréstimo utilizando Random Forest.
 
 ## Avaliação do modelo
 
-Accuracy: XX%
+Accuracy: 99.57%
+Confusion matrix: [[822  2] [4 572]]
 Precision: XX%
 Recall: XX%
 F1-score: XX%

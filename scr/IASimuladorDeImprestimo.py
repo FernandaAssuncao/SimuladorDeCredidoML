@@ -46,6 +46,7 @@ class IAFinanceira:
         self.__modelo = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
         self.__treinada = False
         self.verificar()
+        self.testar_modelo()
 
     def __treinar_ia(self):
         x = []
@@ -90,6 +91,9 @@ class IAFinanceira:
     def calcular_probabilidade(self, idade:int, salario:float, valor:float, nome_limpo:int):
         resultado = self.__modelo.predict_proba([[idade, salario, valor, nome_limpo]])
         return resultado[0][1]
+
+    def testar_modelo(self):
+        self.__treinar_ia()
 
     def __atualizar_treinamento_da_ia(self):
         pass
