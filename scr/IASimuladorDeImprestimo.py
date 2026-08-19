@@ -88,9 +88,13 @@ class IAFinanceira:
             self.__salvar_modelo()
             print('Modelo treinado e salvo com sucesso!')
 
-    def calcular_probabilidade(self, idade:int, salario:float, valor:float, nome_limpo:int):
+    def calcular_probabilidade_aprovado(self, idade:int, salario:float, valor:float, nome_limpo:int):
         resultado = self.__modelo.predict_proba([[idade, salario, valor, nome_limpo]])
         return resultado[0][1]
+
+    def calcular_probabilidade_reprovado(self, idade:int, salario:float, valor:float, nome_limpo:int):
+        resultado = self.__modelo.predict_proba([[idade, salario, valor, nome_limpo]])
+        return resultado[0][0]
 
     def testar_modelo(self):
         self.__treinar_ia()

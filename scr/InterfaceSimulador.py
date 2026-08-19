@@ -97,15 +97,16 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
             nome_limpo = int(self.switch_nome_limpo.get())
             cliente = PropostaImprestimo(idade, salario, nome_limpo, valor)
             previsao = self.ia.prever(idade, salario, valor, nome_limpo)
-            probabilidade = self.ia.calcular_probabilidade(idade, salario, valor, nome_limpo)
             if previsao:
+                probabilidade = self.ia.calcular_probabilidade_aprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'aprovado'
                 cor = '#7FFFD4'
                 texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado}\n foi {cliente.status}.Probabilidade estimada {probabilidade * 100:.2f}%'
             else:
+                probabilidade = self.ia.calcular_probabilidade_reprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'reprovado'
                 cor = '#9B111E'
-                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado}\n foi {cliente.status}.Probabilidade estimada {(1.0- probabilidade) * 100:.2f}%'
+                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado}\n foi {cliente.status}.Probabilidade estimada {probabilidade* 100:.2f}%'
             self.resposta.configure(text=texto, text_color=cor)
             self.campo_idade.configure(border_color=cor)
             self.campo_salario.configure(border_color=cor)
