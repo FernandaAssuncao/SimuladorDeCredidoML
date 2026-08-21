@@ -10,7 +10,7 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
         self.ia = IAFinanceira()
 
         self.title('Simulador de Imprestimo')
-        self.geometry('550x600')
+        self.geometry('600x650')
         self._set_appearance_mode('dark')
         self.columnconfigure(0, weight=1)
 
