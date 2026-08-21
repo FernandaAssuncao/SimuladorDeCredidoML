@@ -64,9 +64,9 @@ class IAFinanceira:
                                                               stratify=y)
         self.__modelo.fit(x_treino, y_treino)
         previsoes = self.__modelo.predict(x_test)
-        acuarry = accuracy_score(y_test, previsoes)
+        accuracy = accuracy_score(y_test, previsoes)
         confusion = confusion_matrix(y_test, previsoes)
-        print(f'Accuracy: {acuarry:.4f}')
+        print(f'Accuracy: {accuracy:.4f}')
         print(f'Confusion matrix: {confusion}')
         self.__treinada = True
 
