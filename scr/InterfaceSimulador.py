@@ -1,4 +1,4 @@
-from .ClienteSistema import PropostaImprestimo
+from .ClienteSistema import PropostaEmprestimo
 from .IASimuladorDeImprestimo import IAFinanceira
 import customtkinter as ctk
 from .GerenciadorDeDados import GerenciarDados
@@ -95,18 +95,18 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
             salario = float(self.campo_salario.get())
             valor = float(self.campo_valor.get())
             nome_limpo = int(self.switch_nome_limpo.get())
-            cliente = PropostaImprestimo(idade, salario, nome_limpo, valor)
+            cliente = PropostaEmprestimo(idade, salario, nome_limpo, valor)
             previsao = self.ia.prever(idade, salario, valor, nome_limpo)
             if previsao:
                 probabilidade = self.ia.calcular_probabilidade_aprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'aprovado'
                 cor = '#7FFFD4'
-                texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade estimada {probabilidade * 100:.2f}%'
+                texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade de aprovação estimada {probabilidade * 100:.2f}%'
             else:
                 probabilidade = self.ia.calcular_probabilidade_reprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'reprovado'
                 cor = '#9B111E'
-                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade estimada {probabilidade* 100:.2f}%'
+                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade de reprovação estimada {probabilidade* 100:.2f}%'
             self.resposta.configure(text=texto, text_color=cor)
             self.campo_idade.configure(border_color=cor)
             self.campo_salario.configure(border_color=cor)

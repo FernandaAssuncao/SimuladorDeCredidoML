@@ -1,13 +1,11 @@
-from abc import ABC
-
-class Cliente(ABC):
+class Cliente:
     def __init__(self, idade:int, salario:float, nome_limpo:int):
         self.idade = idade
         self.salario = salario
         self.nome_limpo = nome_limpo
 
 
-class PropostaImprestimo(Cliente):
+class PropostaEmprestimo(Cliente):
     def __init__(self, idade:int, salario:float, nome_limpo:int, valor:float):
         super().__init__(idade, salario, nome_limpo)
         self.valor_solicitado = valor
