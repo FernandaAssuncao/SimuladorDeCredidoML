@@ -34,3 +34,8 @@ F1-score: XX%
 
 Projeto educacional utilizando dados sintéticos.
 Não deve ser utilizado para decisões reais de crédito.
+
+## 🖼️ Demonstração da Interface
+
+| Empréstimo Reprovado | Empréstimo Aprovado |
+| ![Reprovado](assets/emprestimoreprovado.png) | ![Aprovado](assets/emprestimoaprovado.png) |

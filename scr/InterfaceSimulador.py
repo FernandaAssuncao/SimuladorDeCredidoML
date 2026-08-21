@@ -14,7 +14,7 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
         self._set_appearance_mode('dark')
         self.columnconfigure(0, weight=1)
 
-        self.titulo = ctk.CTkLabel(self, text='Simulador de Imprestimo IA', text_color='#00BFFF', fg_color='#1A1A1A',
+        self.titulo = ctk.CTkLabel(self, text='Simulador de Empréstimo IA', text_color='#00BFFF', fg_color='#1A1A1A',
                                    font=('Century Gothic', 25, 'bold'), height=60, corner_radius=15)
         self.titulo.grid(row=0, column=0, columnspan=4, padx=20, pady=20, sticky='nsew')
 
@@ -36,7 +36,7 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
         self.campo_salario.grid(row=2, column=2, padx=20, pady=20, sticky='nsew')
         self.campo_salario.bind("<Return>", lambda event: self.campo_valor.focus_set())
 
-        self.mensagem3 = ctk.CTkLabel(self, text='VALOR DO IMPRESTIMO: ', text_color='#1E90FF',
+        self.mensagem3 = ctk.CTkLabel(self, text='VALOR DO EMPRÉSTIMO: ', text_color='#1E90FF',
                                       font=('Arial', 15, 'bold'))
         self.mensagem3.grid(row=3, column=0, columnspan=1, padx=20, pady=20, sticky='nsew')
 
@@ -101,12 +101,12 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
                 probabilidade = self.ia.calcular_probabilidade_aprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'aprovado'
                 cor = '#7FFFD4'
-                texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado}\n foi {cliente.status}.Probabilidade estimada {probabilidade * 100:.2f}%'
+                texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade estimada {probabilidade * 100:.2f}%'
             else:
                 probabilidade = self.ia.calcular_probabilidade_reprovado(idade, salario, valor, nome_limpo)
                 cliente.status = 'reprovado'
                 cor = '#9B111E'
-                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado}\n foi {cliente.status}.Probabilidade estimada {probabilidade* 100:.2f}%'
+                texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade estimada {probabilidade* 100:.2f}%'
             self.resposta.configure(text=texto, text_color=cor)
             self.campo_idade.configure(border_color=cor)
             self.campo_salario.configure(border_color=cor)

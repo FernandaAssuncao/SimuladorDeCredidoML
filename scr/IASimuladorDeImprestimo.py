@@ -46,7 +46,6 @@ class IAFinanceira:
         self.__modelo = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
         self.__treinada = False
         self.verificar()
-        self.testar_modelo()
 
     def __treinar_ia(self):
         x = []
