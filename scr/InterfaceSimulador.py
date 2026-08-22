@@ -95,15 +95,22 @@ class InterfaceSimuladorImprestimo(ctk.CTk):
             salario = float(self.campo_salario.get())
             valor = float(self.campo_valor.get())
             nome_limpo = int(self.switch_nome_limpo.get())
+            if nome_limpo == 1:
+                historico_inadimplencia = 0
+            else:
+                historico_inadimplencia = 1
+            renda_anual = salario * 12
+            percentual_renda = valor / renda_anual
+            print(percentual_renda)
             cliente = PropostaEmprestimo(idade, salario, nome_limpo, valor)
-            previsao = self.ia.prever(idade, salario, valor, nome_limpo)
+            previsao = self.ia.prever(idade, salario, valor, percentual_renda, historico_inadimplencia)
             if previsao:
-                probabilidade = self.ia.calcular_probabilidade_aprovado(idade, salario, valor, nome_limpo)
+                probabilidade = self.ia.calcular_probabilidade_aprovado(idade, salario, valor, percentual_renda, historico_inadimplencia)
                 cliente.status = 'aprovado'
                 cor = '#7FFFD4'
                 texto = f'Parabéns, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade de aprovação estimada {probabilidade * 100:.2f}%'
             else:
-                probabilidade = self.ia.calcular_probabilidade_reprovado(idade, salario, valor, nome_limpo)
+                probabilidade = self.ia.calcular_probabilidade_reprovado(idade, salario, valor, percentual_renda, historico_inadimplencia)
                 cliente.status = 'reprovado'
                 cor = '#9B111E'
                 texto = f'Sinto muito, o Empréstimo no valor de R${cliente.valor_solicitado:.2f}\n foi {cliente.status}. Probabilidade de reprovação estimada {probabilidade* 100:.2f}%'

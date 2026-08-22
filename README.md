@@ -24,16 +24,15 @@ empréstimo utilizando Random Forest.
 
 ## Avaliação do modelo
 
-Accuracy: 99.57%
-Confusion matrix: [[822  2] [4 572]]
+Accuracy: 83.69%
+Confusion matrix: 
 Precision: XX%
 Recall: XX%
 F1-score: XX%
 
 ## Observação
 
-Projeto educacional utilizando dados sintéticos.
-Não deve ser utilizado para decisões reais de crédito.
+Dados utilizados no projeto são do Kaggle.
 
 ## 🖼️ Demonstração da Interface
 
